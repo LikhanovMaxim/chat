@@ -30,12 +30,13 @@ public class Client {
 
             System.out.println("Комнаты, в которые можно войти:");
             printRooms();
-
-            System.out.println("\nВведите комнату, в которую хотите зайти\n" +
+            System.out.println("------------------------------------");
+            System.out.println("Введите комнату, в которую хотите зайти\n" +
                     "(если её не существует, то сервер создаст новую комнату):");
             out.println(room = scan.nextLine());
             System.out.println("Подскази:\n1) Чтобы отправить файл сначала введите 'file', после его имя\n" +
-                    "2) Если вы хотите выйти, то введите exit");
+                    "2) Если вы хотите выйти, то введите exit\n"+
+                    "------------------------------------");
 
             ReceiveFromServer resend = new ReceiveFromServer(nickname);
             resend.start();
