@@ -1,6 +1,7 @@
 package client;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -35,7 +36,7 @@ public class Client {
                     "(если её не существует, то сервер создаст новую комнату):");
             out.println(room = scan.nextLine());
             System.out.println("Подскази:\n1) Чтобы отправить файл сначала введите 'file', после его имя\n" +
-                    "2) Если вы хотите выйти, то введите exit\n"+
+                    "2) Если вы хотите выйти, то введите exit\n" +
                     "------------------------------------");
 
             ReceiveFromServer resend = new ReceiveFromServer(nickname);
@@ -44,6 +45,8 @@ public class Client {
             }
             resend.setStop();
             deleteInformationFromServer();
+        } catch (ConnectException e) {
+            System.out.println("Не существует такого сервера. Попробуйте ввести другой порт и/или ip");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -113,11 +116,11 @@ public class Client {
 
     private void close() {
         try {
+            socket.close();
             in.close();
             out.close();
             outFile.close();
             inFile.close();
-            socket.close();
         } catch (Exception e) {
             System.err.println("Потоки не были закрыты!");
         }
@@ -129,7 +132,7 @@ public class Client {
 
         private ReceiveFromServer(String nickname) {
             System.out.println("Введите каталог, в котором хотите сохранить файлы из чата:");
-            catalog = Enter.catalog()+ "\\";
+            catalog = Enter.catalog() + "\\";
         }
 
         private void setStop() {
