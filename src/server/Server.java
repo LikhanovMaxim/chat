@@ -169,8 +169,8 @@ public class Server {
                 welcomeAll();
                 for (String message = in.readLine(); !message.equals("exit"); message = in.readLine()) {
                     if (message.equalsIgnoreCase("file")) {
-                        File file = TransferFile.receive(catalogForStore, inFile);
-                        sendFileToUsersInRoom(file);
+                        File accepted = TransferFile.receive(catalogForStore, inFile);
+                        sendFileToUsersInRoom(accepted);
                     } else {
                         sendMessage(message);
                     }
