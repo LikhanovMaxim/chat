@@ -15,11 +15,11 @@ public class App {
             char answer = Character.toLowerCase(scan.nextLine().charAt(0));
             switch (answer) {
                 case 's': {
-                    new Server(Enter.port(scan));
+                    new Server(Enter.port());
                     break;
                 }
                 case 'c': {
-                    new Client(Enter.port(scan));
+                    new Client(Enter.port());
                     break;
                 }
                 case 'e': {

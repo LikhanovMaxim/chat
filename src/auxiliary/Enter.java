@@ -14,7 +14,8 @@ public class Enter {
         return catalog;
     }
 
-    public static int port(Scanner scan) {
+    public static int port() {
+        Scanner scan = new Scanner(System.in);
         System.out.println("Введите номер порта:");
         String port = scan.nextLine();
         while (!Validator.checkPort(port)) {
