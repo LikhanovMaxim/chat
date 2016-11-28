@@ -1,0 +1,6 @@
+1) server.java
+замена реализации rooms
+//    for change function "farewellAll"
+//    private Map<String, Integer> rooms = new HashMap<>();
+
+2) unit tests
